@@ -1,5 +1,9 @@
-from src.rectangle import Rectangle, Square, Circle, Triangle
 import pytest
+
+from src.rectangle import Rectangle
+from src.square import Square
+from src.triangle import Triangle
+from src.circle import Circle
 
 
 @pytest.mark.parametrize('radius, perimeter, area',
@@ -36,12 +40,12 @@ def test_triangle(side_a, side_b, side_c, perimeter, area):
     assert r.get_perimeter() == perimeter
 
 
-@pytest.mark.parametrize('side_a, side_b, side_c, perimeter, area',
+@pytest.mark.parametrize('side_a, side_b, side_c',
                          [
-                             (-4, 5, 3, 2, -20),
-                             (0, 20, 2, 40, 0),
+                             (-4, 5, 3),
+                             (0, 20, 2),
                          ])
-def test_triangle_negative(side_a, side_b, side_c, perimeter, area):
+def test_triangle_negative(side_a, side_b, side_c):
     with pytest.raises(ValueError):
         Triangle(side_a, side_b, side_c)
 
